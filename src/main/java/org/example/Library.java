@@ -7,10 +7,10 @@ public class Library {
     private List<Book> bookList = new ArrayList<>();
 
     public void printAllBooks() {
-        System.out.println("Список всех книг: " + bookList);
+        System.out.println(bookList);
     }
 
-    public void addBook(Book newBook) {
+    public int addBook(Book newBook) {
         if (bookList.isEmpty())
             newBook.setId(1);
         else {
@@ -18,6 +18,7 @@ public class Library {
             newBook.setId(lastBook.getId() + 1);
         }
         bookList.add(newBook);
+        return newBook.getId();
     }
 
     public Book findById(int bookId) {
@@ -33,7 +34,7 @@ public class Library {
         List<Book> result = new ArrayList<>();
 
         for (int i = 0; i < bookList.size(); i++) {
-            if (bookList.get(i).getName().equals(bookName))
+            if (bookList.get(i).getName().startsWith(bookName))
                 result.add(bookList.get(i));
         }
         return result;
@@ -43,7 +44,7 @@ public class Library {
         List<Book> result = new ArrayList<>();
 
         for (int i = 0; i < bookList.size(); i++) {
-            if (bookList.get(i).getGenre().equals(bookGenre))
+            if (bookList.get(i).getGenre().startsWith(bookGenre))
                 result.add(bookList.get(i));
         }
         return result;
@@ -53,18 +54,19 @@ public class Library {
         List<Book> result = new ArrayList<>();
 
         for (int i = 0; i < bookList.size(); i++) {
-            if (bookList.get(i).getAuthorSurname().equals(bookAuthorSurname))
+            if (bookList.get(i).getAuthorSurname().startsWith(bookAuthorSurname))
                 result.add(bookList.get(i));
         }
         return result;
     }
 
-    public void deleteById(int bookId) {
+    public boolean deleteById(int bookId) {
         Book book = findById(bookId);
 
         if (book == null)
-            return;
+            return false;
 
         bookList.remove(book);
+        return true;
     }
 }

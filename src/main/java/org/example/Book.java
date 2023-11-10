@@ -9,6 +9,16 @@ public class Book {
     private int publishingYear;
     private String description;
 
+    @Override
+    public String toString() {
+        return "\n id книги:         " + id +
+               "\n Название книги:   " + name +
+               "\n Жанр:             " + genre +
+               "\n Автор:            " + authorSurname + ' ' + authorName +
+               "\n Год издания:      " + publishingYear +
+               "\n Краткое описание: " + description + '\n';
+    }
+
     public int getId() {
         return id;
     }
