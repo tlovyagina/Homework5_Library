@@ -76,6 +76,7 @@ public class App {
 
         System.out.println("Год издания: ");
         String string = scanner.nextLine();
+
         while (!string.matches("[0-9]+") || Integer.parseInt(string) > 2023 ) {
             System.out.println("Введите корректный год издания: ");
             string = scanner.nextLine();
@@ -88,8 +89,14 @@ public class App {
 
     public static void deleteBook() {
         System.out.print("Введите id книги: ");
-        if (library.deleteById(scanner.nextInt())) {
-            scanner.nextLine();
+        String string = scanner.nextLine();
+
+        while (!string.matches("[0-9]+") ) {
+            System.out.println("Введите корректный id книги: ");
+            string = scanner.nextLine();
+        }
+
+        if (library.deleteById(Integer.parseInt(string))) {
             System.out.println("Книга удалена");
         }
         System.out.println();
