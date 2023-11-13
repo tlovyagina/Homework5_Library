@@ -75,8 +75,12 @@ public class App {
         book.setDescription(scanner.nextLine());
 
         System.out.println("Год издания: ");
-        book.setPublishingYear(scanner.nextInt());
-        scanner.nextLine();
+        String string = scanner.nextLine();
+        while (!string.matches("[0-9]+") || Integer.parseInt(string) > 2023 ) {
+            System.out.println("Введите корректный год издания: ");
+            string = scanner.nextLine();
+        }
+        book.setPublishingYear(Integer.parseInt(string));
 
         System.out.println("Добавлена книга с id: " + library.addBook(book));
         System.out.println();
