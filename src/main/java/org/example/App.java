@@ -77,7 +77,7 @@ public class App {
         System.out.println("Год издания: ");
         String string = scanner.nextLine();
 
-        while (!string.matches("[0-9]+") || Integer.parseInt(string) > 2023 ) {
+        while (!string.matches("-?[0-9]{1,4}") || Integer.parseInt(string) > 2023 ) {
             System.out.println("Введите корректный год издания: ");
             string = scanner.nextLine();
         }

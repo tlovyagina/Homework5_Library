@@ -15,7 +15,7 @@ public class Book {
                "\n Название книги:   " + name +
                "\n Жанр:             " + genre +
                "\n Автор:            " + authorSurname + ' ' + authorName +
-               "\n Год издания:      " + publishingYear +
+               "\n Год издания:      " + (publishingYear < 0 ? publishingYear * -1 + " до н.э." : publishingYear) +
                "\n Краткое описание: " + description + '\n';
     }
 
